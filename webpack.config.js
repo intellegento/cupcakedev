@@ -17,12 +17,21 @@ module.exports = {
               presets: ['@babel/preset-react']
             }
           }
-        }
+        },
+        {
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              'css-loader',
+              'postcss-loader',
+              'sass-loader',
+            ],
+          }
       ]
   },
   devServer: {
     static: path.join(__dirname, 'public'),
-    port: 3000,
+    port: 3500,
     hot: true,
   },
   resolve: {
