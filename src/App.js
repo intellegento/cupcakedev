@@ -1,13 +1,14 @@
 import React from 'react';
 import TableTeaamlate from '../components/TableTemlate';
 
-const App = () => {
+const App = (pageData) => {
   return (
     <div>
-      <h1>Hello, World!</h1>
+      
       <TableTeaamlate />
     </div>
   );
 };
 
 export default App;
+

@@ -18,6 +18,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.14"
+    "autoprefixer": "^10.4.14",
+    "react-axios": "^2.0.6"
   }
 }
