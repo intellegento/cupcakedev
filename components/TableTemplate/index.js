@@ -1,7 +1,7 @@
 import React from "react";
-import Source1 from "../Source1";
 import Source2 from "../Source2";
 import Source3 from "../Source3";
+import Row1 from "../Row1";
 import styles from "./styles.module.scss";
 
 const TableTemplate = ({ data1, data2, data3 }) => {
@@ -9,93 +9,46 @@ const TableTemplate = ({ data1, data2, data3 }) => {
   const rates2 = data2.USD;
   const rates3 = data3.USD;
 
-  const allRates = [rates1, rates2, rates3];
+  const allRates = [parseFloat(rates1.toFixed(2)), parseFloat(rates2.toFixed(2)), parseFloat(rates3.toFixed(2))];
   const minVal = Math.min(...allRates);
   const minValIndex = allRates.indexOf(minVal);
+  
 
-  console.log(minValIndex);
 
   return (
     <>
       <div className={styles.table}>
-        <div className={styles.table__column_shadow}>
-          <div className={styles.table__currencyPairs}>
-            <div className={styles.table__currencyPairs__title}>
+        <div className={styles.table__titleRow}>
+          <div className={styles.table__titleRow__title}>
               <p>Currency Pairs</p>
             </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>USD/Cupcakes</p>
+            <div className={styles.table__titleRow__item}>
+              <p>Source1</p>
             </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>EUR/Cupcakes</p>
+            <div className={styles.table__titleRow__item}>
+              <p>Source2</p>
             </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>RUB/Cupcakes</p>
+            <div className={styles.table__titleRow__item}>
+              <p>Source3</p>
             </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>USD/EUR</p>
-            </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>USD/RUB</p>
-            </div>
-            <div className={styles.table__currencyPairs__item}>
-              <p>EUR/RUB</p>
-            </div>
+        </div>
+        <div className={styles.table__row}>
+          <div className={styles.table__row__title}>
+            <p>USD/Cupcakes</p>
           </div>
-        </div>
-        <div className={styles.table__column}>
-            <Source1 />
-        </div>
-        <div className={styles.table__column}>
-            <Source2 />
-        </div>
-        <div className={styles.table__column}>
-            <Source3 />
+          {allRates.map((rate, index) => (
+            <div className={`${styles.table__row__item} ${
+              index === minValIndex ? styles.min : ""
+            }`}>
+            <p>{rate}</p>
+          </div>
+          ))}
         </div>
       </div>
     </>
   );
 
-  // return (
-  //   <>
-  //     <div className={styles.table}>
-  //       <div className={styles.table__column_shadow}>
-  //         <div className={styles.table__currencyPairs}>
-  //           <div className={styles.table__currencyPairs__title}>
-  //             <p>Currency Pairs</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>USD/Cupcakes</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>EUR/Cupcakes</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>RUB/Cupcakes</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>USD/EUR</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>USD/RUB</p>
-  //           </div>
-  //           <div className={styles.table__currencyPairs__item}>
-  //             <p>EUR/RUB</p>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div className={styles.table__column}>
-  //           <Source1 />
-  //       </div>
-  //       <div className={styles.table__column}>
-  //           <Source2 />
-  //       </div>
-  //       <div className={styles.table__column}>
-  //           <Source3 />
-  //       </div>
-  //     </div>
-  //   </>
-  // );
+
 };
 
 TableTemplate.defaultProps = {};
