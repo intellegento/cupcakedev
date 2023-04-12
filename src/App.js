@@ -12,7 +12,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response1 = await axios.get(
-          `http://localhost:3000/api/v1/first`
+          `http://localhost:3000/api/v1/first/poll`
         );
         setData1(response1.data);
       } catch (error) {
