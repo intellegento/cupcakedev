@@ -1,22 +1,15 @@
 import React from "react";
-import Source2 from "../Source2";
-import Source3 from "../Source3";
-import Row1 from "../Row1";
+import RowUsdCupcake from "../RowUsdCupcake";
+import RowEurCupcake from "../RowEurCupcake";
+import RowRubCupcake from "../RowRubCupcake";
+import RowRubUsd from "../RowRubUsd";
+import RowRubEur from "../RowRubEur";
+import RowEurRub from "../RowEurRub";
 import styles from "./styles.module.scss";
 
 const TableTemplate = ({ data1, data2, data3 }) => {
-  const rates1 = data1.USD;
-  const rates2 = data2.USD;
-  const rates3 = data3.USD;
-
-  const allRates = [parseFloat(rates1.toFixed(2)), parseFloat(rates2.toFixed(2)), parseFloat(rates3.toFixed(2))];
-  const minVal = Math.min(...allRates);
-  const minValIndex = allRates.indexOf(minVal);
   
-
-
   return (
-    <>
       <div className={styles.table}>
         <div className={styles.table__titleRow}>
           <div className={styles.table__titleRow__title}>
@@ -32,20 +25,13 @@ const TableTemplate = ({ data1, data2, data3 }) => {
               <p>Source3</p>
             </div>
         </div>
-        <div className={styles.table__row}>
-          <div className={styles.table__row__title}>
-            <p>USD/Cupcakes</p>
-          </div>
-          {allRates.map((rate, index) => (
-            <div className={`${styles.table__row__item} ${
-              index === minValIndex ? styles.min : ""
-            }`}>
-            <p>{rate}</p>
-          </div>
-          ))}
-        </div>
+        <RowRubCupcake data1={data1.RUB} data2={data2.RUB} data3={data3.RUB} />
+        <RowUsdCupcake data1={data1.USD} data2={data2.USD} data3={data3.USD} />
+        <RowEurCupcake data1={data1.EUR} data2={data2.EUR} data3={data3.EUR} />
+        <RowRubUsd data1={data1.RUB / data1.USD} data2={data2.RUB / data2.USD} data3={data3.RUB / data3.USD} />
+        <RowRubEur data1={data1.RUB / data1.EUR} data2={data2.RUB / data2.EUR} data3={data3.RUB / data3.EUR} />
+        <RowEurRub data1={data1.EUR / data1.RUB} data2={data2.EUR / data2.RUB} data3={data3.EUR / data3.RUB} />
       </div>
-    </>
   );
 
 
