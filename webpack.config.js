@@ -22,7 +22,16 @@ module.exports = {
             test: /\.scss$/,
             use: [
               'style-loader',
-              'css-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1,
+                  modules: {
+                    modules: true,
+                    localIdentName: '[name]__[local]--[hash:base64:5]',
+                  },
+                },
+              },
               'postcss-loader',
               'sass-loader',
             ],
