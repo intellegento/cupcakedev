@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TableTemplate from '../components/TableTemplate';
+import TableTemplate from "../components/TableTemplate";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -57,12 +57,7 @@ const App = () => {
     };
   }, []);
 
-  return (
-    <div>
-      {data && <TableTemplate data={data} />}
-    </div>
-  );
+  return <div>{data && <TableTemplate data={data} />}</div>;
 };
-
 
 export default App;
