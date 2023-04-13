@@ -2,25 +2,24 @@
     max-width: 450px;
 }
 
-.min {
-    background-color: lightblue;
-}
 
 .table {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
-   &__titleRow {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    background-color: aliceblue;
+
+    &__titleRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: aliceblue;
+    }
 
     &__title {
         width: 200px;
         border-bottom: 1px solid grey;
         border-right: 1px solid white;
+        box-shadow: 2px 0px 4px 0px rgba(34, 60, 80, 0.2);
 
         p {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -29,6 +28,7 @@
             text-align: center;
         }
     }
+
     &__item {
         width: 150px;
         border-bottom: 1px solid grey;
@@ -38,37 +38,10 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 20px;
             font-weight: 700;
+            text-transform: capitalize;
             text-align: center;
+            padding: 0;
         }
     }
-   }
 
-   &__row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    &__title {
-        width: 200px;
-        border-bottom: 1px solid grey;
-
-        p {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            text-align: center;
-        }
-    }
-    &__item {
-        width: 150px;
-        border-bottom: 1px solid grey;
-
-        p {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            text-align: center;
-        }
-    }
-   }
 }
