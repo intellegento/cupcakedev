@@ -4,13 +4,14 @@ import TableTemplate from "../components/TableTemplate";
 
 const App = () => {
   const [data, setData] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [response1, response2, response3] = await Promise.all([
-          axios.get(`http://localhost:3000/api/v1/first/poll`),
-          axios.get(`http://localhost:3000/api/v1/second/poll`),
-          axios.get(`http://localhost:3000/api/v1/third/poll`),
+          axios.get(`http://localhost:3000/api/v1/first/poll?timeout=60000`),
+          axios.get(`http://localhost:3000/api/v1/second/poll?timeout=60000`),
+          axios.get(`http://localhost:3000/api/v1/third/poll?timeout=60000`),
         ]);
 
         const source1 = {
@@ -43,18 +44,12 @@ const App = () => {
         setData({ source1, source2, source3 });
       } catch (error) {
         console.error(error);
+      } finally {
+        setTimeout(fetchData, 0);
       }
     };
 
-    const intervalId = setInterval(() => {
-      fetchData();
-    }, 5000);
-
     fetchData();
-
-    return () => {
-      clearInterval(intervalId);
-    };
   }, []);
 
   return <div>{data && <TableTemplate data={data} />}</div>;
